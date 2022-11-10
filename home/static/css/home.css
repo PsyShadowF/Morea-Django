@@ -1,0 +1,185 @@
+/* Configs Gerais */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Background */
+
+    background: var(--backgroundImage);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+/* Config para mostrar que a pagina está selecionada */
+
+#sideBarDivHome {
+    background-color: var(--fundoIconesSideBar);
+}
+
+/* Confings para o container */
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1700px;
+    height: 100%;
+    padding: 0 40px;
+    color: var(--fontColor);
+}
+
+.container__dados {
+    width: 40%;
+    display: grid;
+    justify-content: center;
+}
+
+.container__dados > h1 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.container__textLinks {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+/* Confings para os alertas */
+
+.container__tabelaAlerta {
+    background-color: var(--fundoAlerta);
+    color: #000000;
+    width: 350px;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #00000040;
+}
+
+.container__tabelaAlerta > p {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 25px;
+    box-shadow: 0px 0px 15px #00000040;
+    border-radius: 10px 10px 0 0;
+}
+
+.tabelaAlerta > li{
+    padding: 10px;
+    margin: 10px;
+    list-style: none;
+    box-shadow: 0px 0px 15px #0000003f;
+    border-radius: 10px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabelaAlerta__text {
+    display: flex;
+}
+
+.tabelaAlerta__text > img{
+    height: 20px;
+    margin-right: 5px;
+}
+
+/* Confings para o texto de "O que somos?" */
+
+.container__sobre {
+    margin-bottom: 15px;
+}
+
+.sobre__textPrincipal {
+    font-size: 25px;
+    padding: 5px 0;
+}
+
+/* Confings para os links para outras paginas */
+
+.container__linkOutrasPaginas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Confings gerais para os links*/
+
+.container__dashboard,
+.container__dadosBrutos,
+.container__linkTres {
+    background-color: var(--background);
+    box-shadow: 0px 0px 15px #00000040;
+    border-radius: 10px;
+}
+
+.container__dadosBrutos {
+    margin: 0 15px;
+}
+
+/* Confings para o link Dashboard */
+
+.container__dashTitle,
+.container__dadosBrutosTitle {
+    box-shadow: 0px 0px 15px #00000040;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.container__dashTitle > img,
+.container__dadosBrutosTitle > img {
+    height: 40px;
+    width: 40px;
+}
+
+#container__dadosBrutosIcone,
+#container__dashIcone {
+    filter: var(--filterColorIconesSvg);
+}
+
+.container__dashBody,
+.container__dadosBrutosBody {
+    padding: 20px;
+}
+
+/* Configs para os links vazios */
+
+.container__linkTres {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animations */
+
+/* Animação hover */
+
+.container__dashboard:hover,
+.container__dadosBrutos:hover {
+    cursor: pointer;
+}

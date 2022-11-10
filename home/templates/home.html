@@ -1,0 +1,213 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/paletas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/mqHome.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sideBar.css' %}" />
+
+    <title>Morea - Home</title>
+  </head>
+  <body class="container--white">
+    <div class="container">
+      <div id="sideBar" class="sideBar">
+        <div id="sideBar__imageCordenador" class="sideBar__imageCordenador">
+          <img
+            id="sideBar__imageRubens"
+            src="{% static 'images/profile_photo.png' %}"
+            alt="Cordenador do projeto"
+          />
+          <p id="sideBar__textCordenador">Rubens M.</p>
+        </div>
+        <div class="sideBar_options">
+          <div class="sideBarDivHome" id="sideBarDivHome">
+            <img
+              id="sideBar__home"
+              class="sideBar__home"
+              src="{% static 'icons/home-icon-blk.png' %}"
+              alt="Home"
+            />
+            <p id="sideBar__textHome"></p>
+          </div>
+
+          <div class="sideBarDivDashboard" id="sideBarDivDashboard">
+            <img
+              id="sideBar__dashboard"
+              class="sideBar__dashboard"
+              src="{% static 'icons/dashboard-icon-blk.png' %}"
+              alt="Dashboard"
+            />
+            <p id="sideBar__textDashboard"></p>
+          </div>
+
+          <div class="sideBarDivDadosBrutos" id="sideBarDivDadosBrutos">
+            <img
+              id="sideBar__dadosBrutos"
+              class="sideBar__dadosBrutos"
+              src="{% static 'icons/Icon-Dados Brutos.svg' %}"
+              alt="Dados Brutos"
+            />
+            <p id="sideBar__textDadosBrutos"></p>
+          </div>
+        </div>
+        <div class="sideBar__mudarTema" id="sideBar__mudarTema">
+          <img
+            id="sideBar__mudarTemaImage"
+            class="sideBar__mudarTemaImage"
+            src="{% static 'icons/moon-icon-general.png' %}"
+            alt="Botão para mudar o tema"
+          />
+          <p id="sideBar__mudarTemaText"></p>
+        </div>
+      </div>
+      <!-- Parte dos alertas -->
+      <div class="container__dados">
+        <h1>Home</h1>
+        <div class="container__tabelaAlerta">
+          <p>Alerta de Consumo</p>
+          <!-- Essa lista vai ser gerada via Js -->
+          <ul class="tabelaAlerta">
+            <li>
+              <div class="tabelaAlerta__text">
+                <img
+                  src="{% static 'icons/water-icon-general.png' %}"
+                  alt="Icon"
+                />
+                <p>WMote_01</p>
+              </div>
+              <div class="tabelaAlerta__location">
+                <p>Bebedouro | Coinf</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="tabelaAlerta__text">
+                <img
+                  src="{% static 'icons/light-icon-general.png' %}"
+                  alt="Icon"
+                />
+                <p>EMote_01</p>
+              </div>
+              <div class="tabelaAlerta__location">
+                <p>Sala | CTI</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="tabelaAlerta__text">
+                <img
+                  src="{% static 'icons/gas-icon-general.png' %}"
+                  alt="Icon"
+                />
+                <p>GMote_01</p>
+              </div>
+              <div class="tabelaAlerta__location">
+                <p>Lab. Redes | Coinf</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="tabelaAlerta__text">
+                <img
+                  src="{% static 'icons/gas-icon-general.png' %}"
+                  alt="Icon"
+                />
+                <p>GMote_01</p>
+              </div>
+              <div class="tabelaAlerta__location">
+                <p>Lab. Redes | Coinf</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="tabelaAlerta__text">
+                <img
+                  src="{% static 'icons/gas-icon-general.png' %}"
+                  alt="Icon"
+                />
+                <p>GMote_01</p>
+              </div>
+              <div class="tabelaAlerta__location">
+                <p>Lab. Redes | Coinf</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Parte dos textos é "Links" para outras paginas -->
+      <div class="container__textLinks">
+        <div class="container__sobre">
+          <p class="sobre__textPrincipal">O Que Somos?</p>
+          <p>
+            O projeto Morea tem como objetivo realizar estudos sobre a
+            aplicação, implementação e uso de um protótipo de sistema integrado
+            para o monitoramento setorizado do consumo de água, energia e
+            qualidade do ar, permitindo a identificação de situações atípicas,
+            além de prever estatísticas mensais dos mesmos dados.
+          </p>
+        </div>
+        <!-- Parte dos links -->
+        <div class="container__linkOutrasPaginas">
+          <!-- Link para Dashboard -->
+
+          <div id="container__dashboard" class="container__dashboard">
+            <div class="container__dashTitle">
+              <img
+                id="container__dashIcone"
+                src="{% static 'icons/dashboard-icon-blk.png' %}"
+                alt="Icon Dashboard"
+              />
+              <p>Dashboard</p>
+            </div>
+            <div class="container__dashBody">
+              <p>
+                Um dashboard é um painel visual que tem função de apresentar
+                informações de maneira dinâmica e objetiva, como também
+                possibilitar uma visão geral dos dados específicos do projeto.
+                Assim, gerando a tendência de facilitar a correção de possíveis
+                erros e pensar em novas soluções para a inovação do produto
+                apresentado.
+              </p>
+            </div>
+          </div>
+
+          <!-- Link para DADOS BRUTOS -->
+          <div class="container__dadosBrutos" id="container__dadosBrutos">
+            <div class="container__dadosBrutosTitle">
+              <img
+                id="container__dadosBrutosIcone"
+                src="{% static 'icons/Icon-Dados Brutos.svg' %}"
+                alt="Icon Dados Brutos"
+              />
+              <p>Dados Brutos</p>
+            </div>
+            <div class="container__dadosBrutosBody">
+              <p>
+                Esta é uma página dedicada a visualização dos dados em sua forma
+                bruta, afim de fornecer maior controle na análise tanto de
+                consumo quanto para identificar possíveis vazamentos no sistema,
+                sendo crucial para agilizar diversas terefas para a equipe.
+              </p>
+            </div>
+          </div>
+          <!-- Link para __ -->
+          <div class="container__linkTres">
+            <p>Em Desenvolvimento</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORT SCRIPT -->
+
+    <script src="{% static 'js/mudarTema.js' %}"></script>
+    <script src="{% static 'js/sideBarHover.js' %}"></script>
+    <script src="{% static 'js/links.js' %}"></script>
+  </body>
+</html>

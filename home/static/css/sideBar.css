@@ -1,0 +1,87 @@
+.sideBar {
+    position: absolute;
+    left: 0;
+    background-color: var(--background);
+    box-shadow: 0px 0px 15px #00000040;
+    height: 100%;
+    width: 70px;
+    transition: all .4s ease-in-out;
+    z-index: 2; /*APENAS PARA A SIDE BAR FICAR NA FRENTE DO ICONES*/
+}
+
+.sideBar__imageCordenador {
+    padding: 10px;
+}
+
+.sideBar__imageCordenador, 
+.sideBar_options {
+    display: grid;
+    justify-content: center;
+}
+
+.sideBar__imageCordenador > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sideBar__imageCordenador > p {
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.sideBar_options img {
+    width: 30px;
+    height: 30px;
+    filter: var(--filterColorIconesSvg);
+}
+
+/* Efeitos da div sidebar hover */
+
+#sideBarDivHome,
+#sideBarDivDashboard,
+#sideBarDivDadosBrutos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 70px;
+    transition: all .4s ease-in-out;
+}
+
+#sideBarDivHome p,
+#sideBarDivDashboard p,
+#sideBarDivDadosBrutos p {
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+#sideBar__mudarTemaText {
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Configs para o botão de mudar de tema */
+
+.sideBar__mudarTema {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: calc(100% - 250px); /*Gambiarra mudar no futuro ;)*/
+}
+
+.sideBar__mudarTema > img {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    box-shadow: 0px 0px 15px #0000002a;
+    border-radius: 10px 0px 10px 0px;
+}
+
+.sideBarDivHome:hover,
+.sideBarDivDashboard:hover,
+.sideBarDivDadosBrutos:hover,
+.sideBar__mudarTemaImage:hover {
+    cursor: pointer;
+}

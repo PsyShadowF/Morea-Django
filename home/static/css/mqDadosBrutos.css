@@ -1,0 +1,20 @@
+/* @media para caso o height seja menor que 420px */
+
+@media (max-height: 420px) {
+    /*--heightTabela*/
+
+    body {
+        height: var(--heightTabela);
+    }
+
+    .sideBar {
+        height: var(--heightTabela) !important;
+    }
+
+}
+
+@media (max-width: 1800px) {
+    body {
+        justify-content: flex-end;
+    }
+}

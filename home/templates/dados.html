@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/dadosBrutos.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/mqDadosBrutos.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sideBar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/paletas.css' %}">
+
+    <title>Morea - Dados Brutos</title>
+  </head>
+  <body class="container--white">
+    <div class="container">
+      <div id="sideBar" class="sideBar">
+        <div id="sideBar__imageCordenador" class="sideBar__imageCordenador">
+          <img
+            id="sideBar__imageRubens"
+            src="{% static 'images/profile_photo.png' %}"
+            alt="Cordenador do projeto"
+          />
+          <p id="sideBar__textCordenador">Rubens M.</p>
+        </div>
+        <div class="sideBar_options">
+          <div class="sideBarDivHome" id="sideBarDivHome">
+            <img
+              id="sideBar__home"
+              class="sideBar__home"
+              src="{% static 'icons/home-icon-blk.png' %}"
+              alt="Home"
+            />
+            <p id="sideBar__textHome"></p>
+          </div>
+
+          <div class="sideBarDivDashboard" id="sideBarDivDashboard">
+            <img
+              id="sideBar__dashboard"
+              class="sideBar__dashboard"
+              src="{% static 'icons/dashboard-icon-blk.png' %}"
+              alt="Dashboard"
+            />
+            <p id="sideBar__textDashboard"></p>
+          </div>
+
+          <div class="sideBarDivDadosBrutos" id="sideBarDivDadosBrutos">
+            <img
+              id="sideBar__dadosBrutos"
+              class="sideBar__dadosBrutos"
+              src="{% static 'icons/Icon-Dados Brutos.svg' %}"
+              alt="Dados Brutos"
+            />
+            <p id="sideBar__textDadosBrutos"></p>
+          </div>
+        </div>
+        <div class="sideBar__mudarTema" id="sideBar__mudarTema">
+          <img
+            id="sideBar__mudarTemaImage"
+            class="sideBar__mudarTemaImage"
+            src="{% static 'icons/moon-icon-general.png' %}"
+            alt="Botão para mudar o tema"
+          />
+          <p id="sideBar__mudarTemaText"></p>
+        </div>
+      </div>
+
+      <!-- FINAL DA SIDE BAR -->
+
+      <div class="container__titulo">
+        <h1 class="tituloPrincipal">Dados Brutos</h1>
+        <img
+          id="btnTrocarDados"
+          class="btnTrocarDados"
+          src="{% static 'icons/light-icon-general.png' %}"
+          alt="Button para trocar os dados"
+        />
+      </div>
+
+      <div class="container__tabelaDadosBrutos">
+        <table class="table">
+          <tr>
+            <th>Dispositivo</th>
+            <th>Local</th>
+            <th>Vazão Instant. (L/H)</th>
+            <th>Consumo Acumulado (L)</th>
+            <th>Data</th>
+          </tr>
+          <tr>
+            <td>Wmote01</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
+            <td>Coinf</td>
+            <td>10.0L</td>
+            <td>325.89L</td>
+            <td>Aug 29, 2022, 12:20p.m.</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
+            <td>Coinf</td>
+            <td>10.0L</td>
+            <td>325.89L</td>
+            <td>Aug 29, 2022, 12:20p.m.</td>
+          </tr>
+          <tr>
+            <td>wmote02</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
+            <td>Coinf</td>
+            <td>10.0L</td>
+            <td>325.89L</td>
+            <td>Aug 29, 2022, 12:20p.m.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- JAVA SCRIPT -->
+
+    <script src="{% static 'js/sideBarHover.js' %}"></script>
+    <script src="{% static 'js/mudarTema.js' %}"></script>
+    <script src="{% static 'js/trocaDados.js' %}"></script>
+    <script src="{% static 'js/links.js' %}"></script>
+    <script src="{% static 'js/dadosBrutos.js' %}"></script>
+  </body>
+</html>

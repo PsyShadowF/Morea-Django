@@ -1,0 +1,21 @@
+.container--white {
+    --linhaPadrao: #000000; 
+    --background: #ffffff;
+    --fundoAlerta: #FF6464;
+    --fontColor: #000000;
+    --fundoIconesSideBar: #CED1CC;
+    --filterColorIconesSvg: invert(0%) sepia(4%) saturate(7490%) hue-rotate(106deg) brightness(107%) contrast(100%); /*FILTER PARA TROCAR AS CORES DOS ICONES SVG*/
+    --backgroundImage: url('/static/images/bg-lines.png');
+    --fundoIconesMudarTabela: #CED1CC;
+}
+
+.container--black {
+    --linhaPadrao: #ffffff;
+    --background: #343434;
+    --fundoAlerta: #FF6464;
+    --fontColor: #ffffff;
+    --fundoIconesSideBar: #262626;
+    --filterColorIconesSvg: invert(87%) sepia(97%) saturate(1930%) hue-rotate(181deg) brightness(119%) contrast(100%); /*FILTER PARA TROCAR AS CORES DOS ICONES SVG*/
+    --backgroundImage: url('/static/images/bg-lines-black.png');
+    --fundoIconesMudarTabela: #262626;
+}

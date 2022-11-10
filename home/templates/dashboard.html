@@ -1,0 +1,206 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/mqDashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sideBar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/paletas.css' %}">
+
+
+    <title>Morea - Dashboard</title>
+  </head>
+  <body class="container--white">
+    <div class="container">
+      <div id="sideBar" class="sideBar">
+        <div id="sideBar__imageCordenador" class="sideBar__imageCordenador">
+          <img
+            id="sideBar__imageRubens"
+            src="{% static 'images/profile_photo.png' %}"
+            alt="Cordenador do projeto"
+          />
+          <p id="sideBar__textCordenador">Rubens M.</p>
+        </div>
+        <div class="sideBar_options">
+          <div class="sideBarDivHome" id="sideBarDivHome">
+            <img
+              id="sideBar__home"
+              class="sideBar__home"
+              src="{% static 'icons/home-icon-blk.png' %}"
+              alt="Home"
+            />
+            <p id="sideBar__textHome"></p>
+          </div>
+
+          <div class="sideBarDivDashboard" id="sideBarDivDashboard">
+            <img
+              id="sideBar__dashboard"
+              class="sideBar__dashboard"
+              src="{% static 'icons/dashboard-icon-blk.png' %}"
+              alt="Dashboard"
+            />
+            <p id="sideBar__textDashboard"></p>
+          </div>
+
+          <div class="sideBarDivDadosBrutos" id="sideBarDivDadosBrutos">
+            <img
+              id="sideBar__dadosBrutos"
+              class="sideBar__dadosBrutos"
+              src="{% static 'icons/Icon-Dados Brutos.svg' %}"
+              alt="Dados Brutos"
+            />
+            <p id="sideBar__textDadosBrutos"></p>
+          </div>
+        </div>
+        <div class="sideBar__mudarTema" id="sideBar__mudarTema">
+          <img
+            id="sideBar__mudarTemaImage"
+            class="sideBar__mudarTemaImage"
+            src="{% static 'icons/moon-icon-general.png' %}"
+            alt="Botão para mudar o tema"
+          />
+          <p id="sideBar__mudarTemaText"></p>
+        </div>
+      </div>
+
+      <!-- TITULO -->
+
+      <div class="container__titulo">
+        <h1 class="tituloPrincipal">Dashboard</h1>
+        <img
+          id="btnTrocarDados"
+          class="btnTrocarDados"
+          src="{% static 'icons/light-icon-general.png' %}"
+          alt="Button para trocar os dados"
+        />
+      </div>
+
+      <!-- CONTAINER PARA OS GRAFICOS -->
+
+      <div class="container__graficos">
+        <div class="container__consumoTotal">
+          <div class="container__graficosHeader">
+            <p class="container__textHeader">Consumo Total</p>
+            <div class="container__options">
+              <input
+                type="radio"
+                name="consumoTotalOpt"
+                id="consumoTotalOptDiario"
+                checked
+              />
+              <label for="consumoTotalOptDiario">Diário</label>
+
+              <input
+                type="radio"
+                name="consumoTotalOpt"
+                id="consumoTotalOptSemanal"
+              />
+              <label for="consumoTotalOptSemanal">Semanal</label>
+
+              <input
+                type="radio"
+                name="consumoTotalOpt"
+                id="consumoTotalOptMensal"
+              />
+              <label for="consumoTotalOptMensal">Mensal</label>
+            </div>
+          </div>
+          <h1 class="container__textPrincipal">Gráfico</h1>
+        </div>
+
+        <div class="container__consumoMedio">
+          <div class="container__graficosHeader">
+            <p class="container__textHeader">Consumo Médio</p>
+            <div class="container__options">
+              <input
+                type="radio"
+                name="consumoMedioOpt"
+                id="consumoMedioOptDiario"
+                checked
+              />
+              <label for="consumoMedioOptDiario">Diário</label>
+
+              <input
+                type="radio"
+                name="consumoMedioOpt"
+                id="consumoMedioOptSemanal"
+              />
+              <label for="consumoMedioOptSemanal">Semanal</label>
+
+              <input
+                type="radio"
+                name="consumoMedioOpt"
+                id="consumoMedioOptMensal"
+              />
+              <label for="consumoMedioOptMensal">Mensal</label>
+            </div>
+          </div>
+          <h1 class="container__textPrincipal">Gráfico</h1>
+        </div>
+      </div>
+
+      <!-- CONTAINER PARA AS TABELAS -->
+
+      <div class="container__tabelas">
+        <table class="table">
+          <tr class="table__linhaPadrao">
+            <th>Dispositivo</th>
+            <th>Média</th>
+            <th>Mediana</th>
+            <th>Desvio Padrão</th>
+            <th>C. de Variação</th>
+            <th>Máximo</th>
+            <th>Mínimo</th>
+            <th>Primeiro Q.</th>
+            <th>Terceiro Q.</th>
+          </tr>
+          <tr class="table__linhaPadrao">
+            <td>Wmote1</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr class="table__linhaPadrao">
+            <td>Wmote2</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr class="table__linhaNotPadrao">
+            <td>Wmote3</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- JAVA SCRIPT -->
+
+    <script src="{% static 'js/mudarTema.js' %}"></script>
+    <script src="{% static 'js/sideBarHover.js' %}"></script>
+    <script src="{% static 'js/trocaDados.js' %}"></script>
+    <script src="{% static 'js/links.js' %}"></script>
+  </body>
+</html>

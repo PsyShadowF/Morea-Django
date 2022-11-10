@@ -1,0 +1,158 @@
+/* CONFIG PARA ALTERAR O TAMANHO DA DIV ALERTA */
+
+@media (max-width: 360px) {
+    .container__tabelaAlerta > p {
+        font-size: 6vmin;
+    }
+
+    .tabelaAlerta li {
+        font-size: 4vmin;
+    }
+}
+
+
+/* CONFIG PARA TELAS SUPER PEQUENAS */
+
+@media (max-width: 500px) {
+    .tabelaAlerta li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+}
+
+/* 
+CONFIG PARA QUANDO DIMINUIR A ALTURA DA TELA
+NÃO BUGAR
+ */
+
+@media (max-height: 550px) {
+    body {
+        display: flex;
+        min-height: 600px;
+    }
+
+    .sideBar {
+        min-height: 600px;
+    }
+}
+
+/* @MEDIA PARA DIMINUIR OS TAMANHOS DAS FONTES */
+
+@media (max-width: 570px) {
+    .sobre__textPrincipal {
+        font-size: 3vmin;
+    }
+
+    .container__sobre p + p {
+        font-size: 2.5vmin;
+    }
+
+    .container__dashBody p,
+    .container__dadosBrutosBody p {
+        font-size: 2.5vmin;
+    }
+
+    .container__dashboard p,
+    .container__dadosBrutos p,
+    .container__linkTres p {
+        font-size: 3vmin;
+    }
+
+}
+
+/* 
+CONFIG PARA QUANDO DIMINUIR A LARGURA DA TELA
+NÃO BUGAR
+ */
+
+@media (max-width: 1300px) {
+
+    /* CONFIGS PRINCIPAIS */
+
+    body {
+        display: flex;
+        min-height: 1200px;
+        justify-content: flex-end;
+    }
+
+    .sideBar {
+        min-height: 1200px;
+    }
+
+    /* CONFIGS PARA O CONTAINER */
+
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        width: calc(100% - 70px);
+        gap: 15px;
+    }
+
+
+    /* CONFIGS PARA O DADOS */
+
+    .container__dados {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .container__dados > h1 {
+        width: 100%;
+    }
+
+    /* CONFIGS PARA O CONTAINER ALERTA*/
+    
+    .container__tabelaAlerta {
+        height: 100%;
+        width: 100%;
+    }
+
+    /* CONFIGS PARA CASO TENHA MUITOS ALERTAS */
+
+    .container__tabelaAlerta ul {
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+
+    .container__tabelaAlerta ul::-webkit-scrollbar {
+        background-color: var(--fundoAlerta);
+        border-radius: 20px;
+        width: 8px;
+    }
+
+    .container__tabelaAlerta ul::-webkit-scrollbar-thumb {
+        background-color: #d45050;
+        border-radius: 20px;
+    }
+
+
+    /* CONFIGS PARA O CONTAINER SOBRE / LINKS*/
+
+    .container__sobre {
+        background-color: var(--fundoIconesSideBar);
+        padding: 10px;
+        border-radius: 10px;
+    }
+    
+    .container__textLinks {
+        height: auto;
+        width: 100%;
+        display: flex;
+    }
+
+    .container__linkOutrasPaginas {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container__dadosBrutos {
+        margin: 0;
+    }
+
+}
