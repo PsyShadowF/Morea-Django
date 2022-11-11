@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .models import Water, Energy, WaterStats, EnergyStats
+from .models import Water
+from statistics import *
 
 # Create your views here.
 
@@ -13,17 +14,17 @@ def home(request):
 
 
 def dados(request):
-    waterData = Water.objects.all()
-    energyData = Energy.objects.all()
 
-    return render(request, 'dados.html', {'waterData': waterData, 'energyData': energyData})
+    data = Water.objects.all()
+
+    print(data)
+
+    return render(request, 'dados.html', {'data': data})
 
 
 def dashboard(request):
-    waterStatsData = WaterStats.objects.all()
-    energyStatsData = EnergyStats.objects.all()
 
-    return render(request, 'dashboard.html', {'waterStatsData': waterStatsData, 'energyStatsData': energyStatsData})
+    return render(request, 'dashboard.html')
 
 
 def about(request):

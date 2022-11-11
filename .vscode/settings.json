@@ -1,0 +1,5 @@
+{
+    "python.analysis.typeCheckingMode": "off",
+    "python.linting.enabled": true,
+    "python.formatting.provider": "autopep8"
+}
