@@ -2,46 +2,48 @@ from django.db import models
 
 # Create your models here.
 
+class MoteType(models.IntegerChoices):
+    null = 0, 'NullMote'
+    water = 1, 'WMote'
+    energy = 2, 'EMote'
+    gas_BM = 3, 'BM-GMote'
 
 class Motes(models.Model):
     name = models.CharField(max_length=255)
+    type = models.IntegerField(default=MoteType.null, choices=MoteType.choices)
     sector = models.CharField(max_length=255, null=False)
     location = models.CharField(max_length=255, null=False)
 
 
-class Water(models.Model):
-    mote_id = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
-    instalh = models.FloatField()
-    totall = models.FloatField()
-    collectdate = models.DateTimeField()
+class Data(models.Model):
+    mote = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
+    min_lh = models.FloatField() #Litros/Hora no último minuto
+    total_l = models.FloatField() #Listros totais
+    min_wh = models.FloatField() #Watt/Hora no último minuto
+    total_wh = models.FloatField() #Total de Watts consumidos
+    min_ppm = models.FloatField() #Partes por milhão no último minuto
+    collect_date = models.DateTimeField() #Data de coleta
 
 
-class Energy(models.Model):
-    mote_id = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
-    minwh = models.FloatField()
-    totalwh = models.FloatField()
-    collectdate = models.DateTimeField()
+#class WaterStats(models.Model):
+#    mote_id = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
+#    wMean = models.FloatField()
+#    wMedian = models.FloatField()
+#    wSTD = models.FloatField()
+#    wCV = models.FloatField()
+#    wMax = models.FloatField()
+#    wMin = models.FloatField()
+#    wFQ = models.FloatField()
+#    wTQ = models.FloatField()
 
 
-class WaterStats(models.Model):
-    mote_id = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
-    wMean = models.FloatField()
-    wMedian = models.FloatField()
-    wSTD = models.FloatField()
-    wCV = models.FloatField()
-    wMax = models.FloatField()
-    wMin = models.FloatField()
-    wFQ = models.FloatField()
-    wTQ = models.FloatField()
-
-
-class EnergyStats(models.Model):
-    mote_id = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
-    eMean = models.FloatField()
-    eMedian = models.FloatField()
-    eSTD = models.FloatField()
-    eCV = models.FloatField()
-    eMax = models.FloatField()
-    eMin = models.FloatField()
-    eFQ = models.FloatField()
-    eTQ = models.FloatField()
+#class EnergyStats(models.Model):
+#    mote_id = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
+#    eMean = models.FloatField()
+#    eMedian = models.FloatField()
+#    eSTD = models.FloatField()
+#    eCV = models.FloatField()
+#    eMax = models.FloatField()
+#    eMin = models.FloatField()
+#    eFQ = models.FloatField()
+#    eTQ = models.FloatField()

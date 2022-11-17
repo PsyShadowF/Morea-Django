@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .models import Water, WaterStats, Motes
+from .models import Motes
 from statistics import *
 
 # Create your views here.
@@ -40,9 +40,9 @@ def debbug(request):
         ]
     }
 
-    WaterData = Water.objects.select_related('mote_id')
+    #WaterData = Water.objects.select_related('mote')
 
-    print(WaterData.query)
-    print(WaterData[0])
+    #print(WaterData.query)
+    #print(WaterData[0])
 
-    return render(request, 'debbug.html', {'data': WaterData})
+    return render(request, 'debbug.html')
