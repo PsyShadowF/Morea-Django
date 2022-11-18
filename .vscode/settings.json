@@ -1,5 +1,8 @@
 {
     "python.analysis.typeCheckingMode": "off",
     "python.linting.enabled": true,
-    "python.formatting.provider": "autopep8"
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Args": [
+        "--max-line-length=2000"
+    ]
 }
