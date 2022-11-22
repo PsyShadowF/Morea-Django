@@ -17,11 +17,11 @@ class Motes(models.Model):
 
 class Data(models.Model):
     mote = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
-    min_lh = models.FloatField() #Litros/Hora no último minuto
-    total_l = models.FloatField() #Listros totais
-    min_wh = models.FloatField() #Watt/Hora no último minuto
-    total_wh = models.FloatField() #Total de Watts consumidos
-    min_ppm = models.FloatField() #Partes por milhão no último minuto
+    min_lh = models.FloatField(default=0) #Litros/Hora no último minuto
+    total_l = models.FloatField(default=0) #Listros totais
+    min_wh = models.FloatField(default=0) #Watt/Hora no último minuto
+    total_wh = models.FloatField(default=0) #Total de Watts consumidos
+    min_ppm = models.FloatField(default=0) #Partes por milhão no último minuto
     collect_date = models.DateTimeField() #Data de coleta
 
 

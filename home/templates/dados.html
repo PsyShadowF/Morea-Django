@@ -70,6 +70,11 @@
       <!-- FINAL DA SIDE BAR -->
 
       <div class="container__titulo">
+        {{item}}
+        {% for item in WMote1 %}
+        {{item.mote.sector}}
+        {{item.min_lh}}
+        {% endfor %}
         <h1 class="tituloPrincipal">Dados Brutos</h1>
         <img
           id="btnTrocarDados"

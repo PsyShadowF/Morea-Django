@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .models import Motes
+from .models import Motes, Data
 from statistics import *
 
 # Create your views here.
@@ -14,8 +14,24 @@ def home(request):
 
 
 def dados(request):
+    waterData = Motes.objects.values_list('id').filter(type=1)
+    context = {
+        'item': waterData
+    }
 
-    return render(request, 'dados.html')
+    counter = 0
+
+    for wdata in waterData:
+        wdatat = int(wdata[0])
+        counter += 1
+        counterText = 'WMote' + str(counter)
+        tempData = Data.objects.filter(mote=wdatat).select_related('mote')
+        print(tempData.query)
+        context.update({counterText: tempData})
+
+    print(context)
+
+    return render(request, 'dados.html', context)
 
 
 def dashboard(request):
