@@ -14,24 +14,20 @@ def home(request):
 
 
 def dados(request):
+
+    #Get Water Motes Values
     waterData = Motes.objects.values_list('id').filter(type=1)
-    context = {
-        'item': waterData
-    }
+    waterDataContext = {}
 
     counter = 0
 
     for wdata in waterData:
         wdatat = int(wdata[0])
         counter += 1
-        counterText = 'WMote' + str(counter)
         tempData = Data.objects.filter(mote=wdatat).select_related('mote')
-        print(tempData.query)
-        context.update({counterText: tempData})
-
-    print(context)
-
-    return render(request, 'dados.html', context)
+        waterDataContext.update({'WMote' + str(counter): tempData})
+    
+    return render(request, 'dados.html', {'water': waterDataContext})
 
 
 def dashboard(request):

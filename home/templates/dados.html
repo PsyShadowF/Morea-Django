@@ -70,8 +70,8 @@
       <!-- FINAL DA SIDE BAR -->
 
       <div class="container__titulo">
-        {{item}}
-        {% for item in WMote1 %}
+        {{water}}
+        {% for item in water.WMote1 %}
         {{item.mote.sector}}
         {{item.min_lh}}
         {% endfor %}
@@ -83,8 +83,6 @@
           alt="Button para trocar os dados"
         />
       </div>
-      {{ data }}
-
       <div class="container__tabelaDadosBrutos">
         <table class="table">
           <tr>
@@ -94,23 +92,20 @@
             <th>Consumo Acumulado (L)</th>
             <th>Data</th>
           </tr>
-          <tr>
-            <td>Wmote01</td>
-          </tr>
-          <tr>
-            <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
-            <td>Coinf</td>
-            <td>10.0L</td>
-            <td>325.89L</td>
-            <td>Aug 29, 2022, 12:20p.m.</td>
-          </tr>
-          <tr>
-            <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
-            <td>Coinf</td>
-            <td>10.0L</td>
-            <td>325.89L</td>
-            <td>Aug 29, 2022, 12:20p.m.</td>
-          </tr>
+          {% for key, value in water.items %}
+            <tr>
+              <td>{{ key }}</td>
+            </tr>
+            {% for item in value %}
+              <tr>
+                <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
+                <td>{{item.mote.sector}}</td>
+                <td>{{item.min_lh}}</td>
+                <td>{{item.total_l}}</td>
+                <td>{{item.collect_date}}</td>
+              </tr>
+            {% endfor %}
+          {% endfor %}
           <tr>
             <td>wmote02</td>
           </tr>
