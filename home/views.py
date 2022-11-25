@@ -18,16 +18,37 @@ def dados(request):
     #Get Water Motes Values
     waterData = Motes.objects.values_list('id').filter(type=1)
     waterDataContext = {}
+    waterCounter = 0
 
-    counter = 0
+    for data in waterData:
+        wData = int(data[0])
+        waterCounter += 1
+        relatedWaterData = Data.objects.filter(mote=wData).select_related('mote')
+        waterDataContext.update({'WMote' + str(waterCounter): relatedWaterData})
 
-    for wdata in waterData:
-        wdatat = int(wdata[0])
-        counter += 1
-        tempData = Data.objects.filter(mote=wdatat).select_related('mote')
-        waterDataContext.update({'WMote' + str(counter): tempData})
-    
-    return render(request, 'dados.html', {'water': waterDataContext})
+    #Get Energy Motes Values
+    energyData = Motes.objects.values_list('id').filter(type=2)
+    energyDataContext = {}
+    energyCounter = 0
+
+    for data in energyData:
+        eData = int(data[0])
+        energyCounter += 1
+        relatedEnergyData = Data.objects.filter(mote=eData).select_related('mote')
+        energyDataContext.update({'EMote' + str(energyCounter): relatedEnergyData})
+
+    #Get Energy Motes Values
+    gas_BMData = Motes.objects.values_list('id').filter(type=3)
+    gas_BMDataContext = {}
+    gas_BMCounter = 0
+
+    for data in gas_BMData:
+        g_BMData = int(data[0])
+        gas_BMCounter += 1
+        relatedGas_BMData = Data.objects.filter(mote=g_BMData).select_related('mote')
+        gas_BMDataContext.update({'GMote-BM' + str(energyCounter): relatedGas_BMData})
+  
+    return render(request, 'dados.html', {'water': waterDataContext, 'energy': energyDataContext, 'gas_BM': gas_BMDataContext})
 
 
 def dashboard(request):

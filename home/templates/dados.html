@@ -70,11 +70,6 @@
       <!-- FINAL DA SIDE BAR -->
 
       <div class="container__titulo">
-        {{water}}
-        {% for item in water.WMote1 %}
-        {{item.mote.sector}}
-        {{item.min_lh}}
-        {% endfor %}
         <h1 class="tituloPrincipal">Dados Brutos</h1>
         <img
           id="btnTrocarDados"
@@ -84,9 +79,11 @@
         />
       </div>
       <div class="container__tabelaDadosBrutos">
+        <!-- Table Água --> 
         <table class="table">
           <tr>
             <th>Dispositivo</th>
+            <th>Setor</th>
             <th>Local</th>
             <th>Vazão Instant. (L/H)</th>
             <th>Consumo Acumulado (L)</th>
@@ -100,23 +97,61 @@
               <tr>
                 <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
                 <td>{{item.mote.sector}}</td>
+                <td>{{item.mote.location}}</td>
                 <td>{{item.min_lh}}</td>
                 <td>{{item.total_l}}</td>
                 <td>{{item.collect_date}}</td>
               </tr>
             {% endfor %}
           {% endfor %}
+        <!-- Table Energia --> 
+        <table class="table">
           <tr>
-            <td>wmote02</td>
+            <th>Dispositivo</th>
+            <th>Setor</th>
+            <th>Local</th>
+            <th>Consumo Último Minuto (Wh/H)</th>
+            <th>Consumo Acumulado (Wh)</th>
+            <th>Data</th>
           </tr>
+        {% for key, value in energy.items %}
           <tr>
-            <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
-            <td>Coinf</td>
-            <td>10.0L</td>
-            <td>325.89L</td>
-            <td>Aug 29, 2022, 12:20p.m.</td>
+            <td>{{ key }}</td>
           </tr>
-        </table>
+          {% for item in value %}
+            <tr>
+              <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
+              <td>{{item.mote.sector}}</td>
+              <td>{{item.mote.location}}</td>
+              <td>{{item.min_wh}}</td>
+              <td>{{item.total_wh}}</td>
+              <td>{{item.collect_date}}</td>
+            </tr>
+          {% endfor %}
+        {% endfor %}
+          <!-- Table Gás Butano e Metano --> 
+          <table class="table">
+            <tr>
+              <th>Dispositivo</th>
+              <th>Setor</th>
+              <th>Local</th>
+              <th>Partes Por Milhão Último Minuto (PPM)</th>
+              <th>Data</th>
+            </tr>
+          {% for key, value in gas_BM.items %}
+            <tr>
+              <td>{{ key }}</td>
+            </tr>
+            {% for item in value %}
+              <tr>
+                <td><img src="{% static 'icons/Line.svg' %}" alt="Linha" /></td>
+                <td>{{item.mote.sector}}</td>
+                <td>{{item.mote.location}}</td>
+                <td>{{item.min_ppm}}</td>
+                <td>{{item.collect_date}}</td>
+              </tr>
+            {% endfor %}
+          {% endfor %}
       </div>
     </div>
 

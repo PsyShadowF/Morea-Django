@@ -6,7 +6,7 @@ class MoteType(models.IntegerChoices):
     null = 0, 'NullMote'
     water = 1, 'WMote'
     energy = 2, 'EMote'
-    gas_BM = 3, 'BM-GMote'
+    gas_BM = 3, 'GMote-BM'
 
 class Motes(models.Model):
     name = models.CharField(max_length=255)
