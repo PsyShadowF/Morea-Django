@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .models import Motes, Data
-from statistics import *
+from .models import Motes, Data, Stats
+from .statistics import *
 
 # Create your views here.
 
@@ -37,7 +37,7 @@ def dados(request):
         relatedEnergyData = Data.objects.filter(mote=eData).select_related('mote')
         energyDataContext.update({'EMote' + str(energyCounter): relatedEnergyData})
 
-    #Get Energy Motes Values
+    #Get Buthane and Methane Gas Motes Values
     gas_BMData = Motes.objects.values_list('id').filter(type=3)
     gas_BMDataContext = {}
     gas_BMCounter = 0
@@ -46,14 +46,26 @@ def dados(request):
         g_BMData = int(data[0])
         gas_BMCounter += 1
         relatedGas_BMData = Data.objects.filter(mote=g_BMData).select_related('mote')
-        gas_BMDataContext.update({'GMote-BM' + str(energyCounter): relatedGas_BMData})
+        gas_BMDataContext.update({'GMote-BM' + str(gas_BMCounter): relatedGas_BMData})
   
     return render(request, 'dados.html', {'water': waterDataContext, 'energy': energyDataContext, 'gas_BM': gas_BMDataContext})
 
 
 def dashboard(request):
 
-    return render(request, 'dashboard.html')
+    calcWaterStats()
+
+    waterData = Motes.objects.values_list('id').filter(type=1)
+    waterDataContext = {}
+    waterCounter = 0
+
+    for data in waterData:
+        wData = int(data[0])
+        waterCounter += 1
+        relatedWaterData = Stats.objects.filter(mote=wData)
+        waterDataContext.update({'WMote' + str(waterCounter): relatedWaterData})
+
+    return render(request, 'dashboard.html', {'water': waterDataContext})
 
 
 def about(request):
@@ -63,14 +75,7 @@ def about(request):
 
 def debbug(request):
     dict = {
-        '1': [
-            'Wmote01',
-            'bebedouro'
-        ],
-        '2': [
-            'Wmote02',
-            'bebedouro'
-        ]
+        'water': deb
     }
 
     #WaterData = Water.objects.select_related('mote')
@@ -78,4 +83,4 @@ def debbug(request):
     #print(WaterData.query)
     #print(WaterData[0])
 
-    return render(request, 'debbug.html')
+    return render(request, 'debbug.html', dict)

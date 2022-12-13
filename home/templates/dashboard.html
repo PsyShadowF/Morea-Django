@@ -158,39 +158,21 @@
             <th>Primeiro Q.</th>
             <th>Terceiro Q.</th>
           </tr>
+          {% for key, value in water.items %}
           <tr class="table__linhaPadrao">
-            <td>Wmote1</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
+            <td>{{ key }}</td>
+            {% for item in value|slice:":1" %}
+            <td>{{ item.mean }}</td>
+            <td>{{ item.median }}</td>
+            <td>{{ item.std}}</td>
+            <td>{{ item.cv }}</td>
+            <td>{{ item.max }}</td>
+            <td>{{ item.min}}</td>
+            <td>{{ item.fq }}</td>
+            <td>{{ item.tq }}</td>
+            {% endfor %}
           </tr>
-          <tr class="table__linhaPadrao">
-            <td>Wmote2</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-          <tr class="table__linhaNotPadrao">
-            <td>Wmote3</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
+          {% endfor %}
         </table>
       </div>
     </div>

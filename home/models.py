@@ -24,17 +24,16 @@ class Data(models.Model):
     min_ppm = models.FloatField(default=0) #Partes por milhão no último minuto
     collect_date = models.DateTimeField() #Data de coleta
 
-
-#class WaterStats(models.Model):
-#    mote_id = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
-#    wMean = models.FloatField()
-#    wMedian = models.FloatField()
-#    wSTD = models.FloatField()
-#    wCV = models.FloatField()
-#    wMax = models.FloatField()
-#    wMin = models.FloatField()
-#    wFQ = models.FloatField()
-#    wTQ = models.FloatField()
+class Stats(models.Model):
+    mote = models.ForeignKey(Motes, on_delete=models.CASCADE, default=0)
+    mean = models.FloatField()
+    median = models.FloatField()
+    std = models.FloatField()
+    cv = models.FloatField()
+    max = models.FloatField()
+    min = models.FloatField()
+    fq = models.FloatField()
+    tq = models.FloatField()
 
 
 #class EnergyStats(models.Model):
