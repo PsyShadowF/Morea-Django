@@ -1,5 +1,7 @@
 import numpy
 from .models import Motes, Data, Stats
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # testing
 
@@ -19,7 +21,44 @@ def calcWaterStats():
         stats = Stats(id=mote[0], mote=Motes.objects.get(id=mote[0]), mean=wMean, median=wMedian, std=wSTD, cv=wCV, max=wMax, min=wMin, fq=wFQ, tq=wTQ)
         stats.save()
 
-deb = 1
+dataList = {}
+wMotes = Motes.objects.values_list('id').filter(type=1)
+biggestList = 0
+qnt = 0
+
+for mote in wMotes:
+    tempDataList = []
+    wMotesData = list(Data.objects.values_list('min_lh').filter(mote=mote))
+    for data in wMotesData:
+        tempDataList.append(data[0])
+    listSize = len(tempDataList)
+    if listSize > biggestList:
+        biggestList = listSize
+
+for mote in wMotes:
+    qnt += 1
+    tempDataList = []
+    wMotesData = list(Data.objects.values_list('min_lh').filter(mote=mote))
+    for data in wMotesData:
+        tempDataList.append(data[0])
+    while len(tempDataList) < biggestList:
+        tempDataList.append(None)
+    dataList.update({'wMote' + str(qnt): tempDataList})
+
+print(dataList)
+
+names = list(dataList.keys())
+values = list(dataList.values())
+
+dataTest = pd.DataFrame(dataList)
+dataTest.head()
+
+dataTest.plot(ylabel='L/H', title='Direct vs Tele Sales')
+
+#plt.bar(range(len(dataList)), values, tick_label=names)
+plt.show()
+
+deb = 0
 
 '''# Water
 wMoteDispsData = list(Water.objects.values_list('dispname'))
