@@ -1,7 +1,10 @@
 import numpy
+from datetime import timedelta
+from django.utils import timezone
 from .models import Motes, Data, Stats
 import pandas as pd
 import matplotlib.pyplot as plt
+from IPython.display import display
 
 # testing
 
@@ -26,9 +29,12 @@ wMotes = Motes.objects.values_list('id').filter(type=1)
 biggestList = 0
 qnt = 0
 
+oneWeek = timezone.now().date() - timedelta(days=7)
+today = timezone.now().date() + timedelta(days=1)
+
 for mote in wMotes:
     tempDataList = []
-    wMotesData = list(Data.objects.values_list('min_lh').filter(mote=mote))
+    wMotesData = list(Data.objects.values_list('min_lh').filter(mote=mote, collect_date__range=[oneWeek, today]))
     for data in wMotesData:
         tempDataList.append(data[0])
     listSize = len(tempDataList)
@@ -38,12 +44,14 @@ for mote in wMotes:
 for mote in wMotes:
     qnt += 1
     tempDataList = []
-    wMotesData = list(Data.objects.values_list('min_lh').filter(mote=mote))
+    wMotesData = list(Data.objects.values_list('min_lh').filter(mote=mote, collect_date__range=[oneWeek, today]).order_by('collect_date'))
     for data in wMotesData:
         tempDataList.append(data[0])
     while len(tempDataList) < biggestList:
         tempDataList.append(None)
     dataList.update({'wMote' + str(qnt): tempDataList})
+
+dateTime = [str(oneWeek + timedelta(days=1)), str(oneWeek + timedelta(days=2)), str(oneWeek + timedelta(days=3)), str(oneWeek + timedelta(days=4)), str(oneWeek + timedelta(days=5)), str(oneWeek + timedelta(days=6)), str(oneWeek + timedelta(days=7)), str(oneWeek + timedelta(days=8))]
 
 print(dataList)
 
@@ -53,7 +61,9 @@ values = list(dataList.values())
 dataTest = pd.DataFrame(dataList)
 dataTest.head()
 
-dataTest.plot(ylabel='L/H', title='Direct vs Tele Sales')
+dataTest.plot(ylabel='L/H', title='Consumo Por Coleta na Última Semana')
+
+display(dataTest)
 
 #plt.bar(range(len(dataList)), values, tick_label=names)
 plt.show()
