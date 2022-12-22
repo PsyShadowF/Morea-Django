@@ -28,45 +28,48 @@ dataList = {}
 wMotes = Motes.objects.values_list('id').filter(type=1)
 biggestList = 0
 qnt = 0
+dateTime = []
 
 oneWeek = timezone.now().date() - timedelta(days=7)
 today = timezone.now().date() + timedelta(days=1)
 
-for mote in wMotes:
-    tempDataList = []
-    wMotesData = list(Data.objects.values_list('min_lh').filter(mote=mote, collect_date__range=[oneWeek, today]))
-    for data in wMotesData:
-        tempDataList.append(data[0])
-    listSize = len(tempDataList)
-    if listSize > biggestList:
-        biggestList = listSize
+for day in range(7):
+    oneWeek += timedelta(days=1)
+    for mote in wMotes:
+        wMoteData = Data.objects.values_list('min_lh').filter(mote=mote, collect_date__year=oneWeek.year, collect_date__month=oneWeek.month, collect_date__day=oneWeek.day)
+        # Coletar o tamanho da maior lista
+        if len(list(wMoteData)) > biggestList:
+            biggestList = len(wMoteData)
+    for size in range(biggestList):
+        dateTime.append(str(oneWeek))
+    for mote in wMotes:
+        tempDataList = []
+        # Coletar o nome do Mote
+        wMoteNameQuery = list(Motes.objects.filter(id=mote[0]).values('name'))
+        wMoteNameList = wMoteNameQuery[0]
+        wMoteName = wMoteNameList.get('name')
+        wMoteData = list(Data.objects.values_list('min_lh').filter(mote=mote, collect_date__year=oneWeek.year, collect_date__month=oneWeek.month, collect_date__day=oneWeek.day))
+        for data in wMoteData:
+            tempDataList.append(data[0])
+        while len(tempDataList) < biggestList:
+            tempDataList.append(None)
+        dataList.update({wMoteName: tempDataList})
 
-for mote in wMotes:
-    qnt += 1
-    tempDataList = []
-    wMotesData = list(Data.objects.values_list('min_lh').filter(mote=mote, collect_date__range=[oneWeek, today]).order_by('collect_date'))
-    for data in wMotesData:
-        tempDataList.append(data[0])
-    while len(tempDataList) < biggestList:
-        tempDataList.append(None)
-    dataList.update({'wMote' + str(qnt): tempDataList})
-
-dateTime = [str(oneWeek + timedelta(days=1)), str(oneWeek + timedelta(days=2)), str(oneWeek + timedelta(days=3)), str(oneWeek + timedelta(days=4)), str(oneWeek + timedelta(days=5)), str(oneWeek + timedelta(days=6)), str(oneWeek + timedelta(days=7)), str(oneWeek + timedelta(days=8))]
-
+print(dateTime)
 print(dataList)
 
 names = list(dataList.keys())
 values = list(dataList.values())
 
-dataTest = pd.DataFrame(dataList)
-dataTest.head()
+#dataTest = pd.DataFrame(dataList, index=dateTime)
+#dataTest.head()
 
-dataTest.plot(ylabel='L/H', title='Consumo Por Coleta na Última Semana')
+#dataTest.plot(ylabel='L/H', title='Consumo Por Coleta na Última Semana')
 
-display(dataTest)
+#display(dataTest)
 
 #plt.bar(range(len(dataList)), values, tick_label=names)
-plt.show()
+#plt.show()
 
 deb = 0
 
