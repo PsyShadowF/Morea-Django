@@ -35,15 +35,18 @@ dateTime = []
 oneWeek = timezone.now().date() - timedelta(days=7)
 today = timezone.now().date() + timedelta(days=1)
 
+# Coleta os dados semanais dia a dia
 for day in range(7):
     qnt += 1
     oneWeek += timedelta(days=1)
     biggestList = 0
     for mote in wMotes:
+        # Coletar os dados do mote no dia
         wMoteData = Data.objects.values_list('min_lh').filter(mote=mote, collect_date__year=oneWeek.year, collect_date__month=oneWeek.month, collect_date__day=oneWeek.day)
         # Coletar o tamanho da maior lista
         if len(list(wMoteData)) > biggestList:
             biggestList = len(wMoteData)
+    # Definir qual o maior número de coletas (Necessário por causa do quadrado perfeito no dataframe do pandas)
     for size in range(biggestList):
         dateTime.append(str(oneWeek))
     for mote in wMotes:
@@ -52,13 +55,16 @@ for day in range(7):
         wMoteNameQuery = list(Motes.objects.filter(id=mote[0]).values('name'))
         wMoteNameList = wMoteNameQuery[0]
         wMoteName = wMoteNameList.get('name')
+        # Coletar os dados do mote no dia
         wMoteData = list(Data.objects.values_list('min_lh').filter(mote=mote, collect_date__year=oneWeek.year, collect_date__month=oneWeek.month, collect_date__day=oneWeek.day))
+        # Adicionar os dados ao dicionário caso seja o primeiro .append
         if qnt == 0:
             for data in wMoteData:
                 tempDataList.append(data[0])
             while len(tempDataList) < biggestList:
                 tempDataList.append(None)
             dataList.update({wMoteName: tempDataList})
+        # Atualizar o dicionário caso a etapa anterior já tenha sido feita
         else:
             for data in wMoteData:
                 tempDataList.append(data[0])
@@ -81,7 +87,7 @@ dataTest.plot(ylabel='L/H', title='Consumo Por Coleta na Última Semana')
 
 display(dataTest)
 
-plt.bar(range(len(dataList)), values, tick_label=names)
+#plt.bar(range(len(dataList)), values, tick_label=names)
 plt.show()
 
 deb = 0
