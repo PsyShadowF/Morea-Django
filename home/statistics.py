@@ -8,6 +8,7 @@ from IPython.display import display
 
 # testing
 
+
 def calcWaterStats():
     wMotes = Motes.objects.values_list('id').filter(type=1)
 
@@ -24,17 +25,20 @@ def calcWaterStats():
         stats = Stats(id=mote[0], mote=Motes.objects.get(id=mote[0]), mean=wMean, median=wMedian, std=wSTD, cv=wCV, max=wMax, min=wMin, fq=wFQ, tq=wTQ)
         stats.save()
 
+
 dataList = {}
 wMotes = Motes.objects.values_list('id').filter(type=1)
 biggestList = 0
-qnt = 0
+qnt = -1
 dateTime = []
 
 oneWeek = timezone.now().date() - timedelta(days=7)
 today = timezone.now().date() + timedelta(days=1)
 
 for day in range(7):
+    qnt += 1
     oneWeek += timedelta(days=1)
+    biggestList = 0
     for mote in wMotes:
         wMoteData = Data.objects.values_list('min_lh').filter(mote=mote, collect_date__year=oneWeek.year, collect_date__month=oneWeek.month, collect_date__day=oneWeek.day)
         # Coletar o tamanho da maior lista
@@ -49,11 +53,20 @@ for day in range(7):
         wMoteNameList = wMoteNameQuery[0]
         wMoteName = wMoteNameList.get('name')
         wMoteData = list(Data.objects.values_list('min_lh').filter(mote=mote, collect_date__year=oneWeek.year, collect_date__month=oneWeek.month, collect_date__day=oneWeek.day))
-        for data in wMoteData:
-            tempDataList.append(data[0])
-        while len(tempDataList) < biggestList:
-            tempDataList.append(None)
-        dataList.update({wMoteName: tempDataList})
+        if qnt == 0:
+            for data in wMoteData:
+                tempDataList.append(data[0])
+            while len(tempDataList) < biggestList:
+                tempDataList.append(None)
+            dataList.update({wMoteName: tempDataList})
+        else:
+            for data in wMoteData:
+                tempDataList.append(data[0])
+            while len(tempDataList) < biggestList:
+                tempDataList.append(None)
+            for item in tempDataList:
+                dataList[wMoteName].append(item)
+
 
 print(dateTime)
 print(dataList)
@@ -61,15 +74,15 @@ print(dataList)
 names = list(dataList.keys())
 values = list(dataList.values())
 
-#dataTest = pd.DataFrame(dataList, index=dateTime)
-#dataTest.head()
+dataTest = pd.DataFrame(dataList, index=dateTime)
+dataTest.head()
 
-#dataTest.plot(ylabel='L/H', title='Consumo Por Coleta na Última Semana')
+dataTest.plot(ylabel='L/H', title='Consumo Por Coleta na Última Semana')
 
-#display(dataTest)
+display(dataTest)
 
-#plt.bar(range(len(dataList)), values, tick_label=names)
-#plt.show()
+plt.bar(range(len(dataList)), values, tick_label=names)
+plt.show()
 
 deb = 0
 
